@@ -23,7 +23,7 @@
           $user_id = test_input($_POST["user_id"]);
           $display_name = test_input($_POST["display_name"]);
           $picture_url = test_input($_POST["picture_url"]);
-          $query_show = "SELECT * FROM LINE_profiles WHERE user_id = '$user_id'";
+          $query_show = "SELECT * FROM {table} WHERE {columns} = '$user_id'";
           $result_show = mysqli_query($link, $query_show) or die();
           if (mysqli_num_rows($result_show) == 0) {
             $sql = "INSERT INTO {table} VALUES('$user_id','$display_name','$picture_url',0)";
