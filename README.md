@@ -4,7 +4,7 @@
 
 
   
-        <?php
+      <?php
 
 
       require("database.inc.php");
