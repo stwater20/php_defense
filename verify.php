@@ -9,7 +9,7 @@ mysqli_select_db($link, $DATABASE) or die("Select Failed");
 // define variables and set to empty values
 $user_id = $email = $picture_url = "";
 
-$allowed_hosts = array('ntutfaq.herokuapp.com');
+$allowed_hosts = array('{your_url}');
 if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_hosts)) {
   header($_SERVER['SERVER_PROTOCOL'] . ' 400 Bad Request');
 } else {
@@ -20,12 +20,12 @@ if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_h
     $query_show = "SELECT * FROM LINE_profiles WHERE user_id = '$user_id'";
     $result_show = mysqli_query($link, $query_show) or die();
     if (mysqli_num_rows($result_show) == 0) {
-      $sql = "INSERT INTO LINE_profiles VALUES('$user_id','$display_name','$picture_url',0)";
+      $sql = "INSERT INTO {table} VALUES('$user_id','$display_name','$picture_url',0)";
       $result = mysqli_query($link, $sql) or die();
     } else {
       $target_row = mysqli_fetch_array($result_show);
       $count = $target_row[3] + 1;
-      $sql = "UPDATE LINE_profiles SET count = $count WHERE user_id = '$user_id'";
+      $sql = "UPDATE {table} SET {columns} = $count WHERE {columns} = '$user_id'";
       $result = mysqli_query($link, $sql) or die();
     }
   }
