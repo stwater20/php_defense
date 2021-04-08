@@ -6,7 +6,7 @@
   
       <?php
 
-
+      //You must replace the value in the braces
       require("database.inc.php");
       $link = mysqli_connect($SERVER, $USERNAME, $PASSWORD) or die("Connect Failed");
       mysqli_query($link, "SET NAMES 'UTF8'");
